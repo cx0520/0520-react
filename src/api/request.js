@@ -8,7 +8,6 @@ const instance = axios.create({
     timeout:5000//限制超时
 });
 
-
 //设置拦截器    请求拦截器
 instance.interceptors.request.use(
     (config) =>{
@@ -19,7 +18,6 @@ instance.interceptors.request.use(
         return config;
     }
 );
-
 
 //设置拦截器    响应拦截器
 instance.interceptors.response.use(

@@ -1,13 +1,16 @@
-import React, {Component} from 'react';
-import {Form, Input, Icon, Button, message} from 'antd';
-import {reqLogin} from "../../apii";
+import React, { Component } from 'react';
+import { Form, Input, Icon, Button, message } from 'antd';
 
-import {connect} from 'react-redux';
-import {saveUser} from "@redux/action-creators";
+import { reqLogin } from '../../api';
+import withCheckLogin from '@conts/with-check-login';
 
-import logo from './logo.png';
+import { connect } from 'react-redux';
+import { saveUser } from '@redux/action-creators';
+
+import logo from '@assets/images/logo.png';
 import './index.less';
 
+@withCheckLogin
 @connect(
     null,
     {saveUser}
@@ -35,6 +38,7 @@ class Login extends Component {
         }
         callback();
     };
+
     //  登录函数（没封装之前）
     // login = (e) => {
     //     e.preventDefault();
@@ -62,7 +66,7 @@ class Login extends Component {
     //         }
     //     })
     // };
-    //表单校验  高阶组件
+
     //登录函数（封装之后）
     login = (e) => {
         e.preventDefault();
@@ -81,6 +85,8 @@ class Login extends Component {
             }
         })
     };
+
+    //表单校验  高阶组件
     render() {
         const {getFieldDecorator} = this.props.form;
         return <div className="login">
